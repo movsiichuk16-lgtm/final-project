@@ -104,7 +104,6 @@ body {
 
 .header__burger {
     display: none;
-    /* Скрыт на десктопе */
     width: 30px;
     height: 20px;
     position: relative;
@@ -119,7 +118,6 @@ body {
     width: 100%;
     height: 2px;
     background-color: #052838;
-    /* Цвет полосок бургера */
     left: 0;
     transition: all 0.3s ease;
 }
@@ -177,6 +175,7 @@ body {
     border-radius: 12px;
     border: none;
     background: #052838;
+    font-family: "outfit";
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
@@ -210,61 +209,25 @@ body {
 
 @media (max-width: 768px) {
 
-    /* Скрываем навигацию и блок с телефоном */
     .header__nav,
     .header__contact {
         display: none !important;
     }
 
-    /* Показываем бургер */
     .header__burger {
         display: block !important;
     }
 
-    /* Логотип будет слева, бургер справа благодаря justify-content: space-between */
     .header {
         padding-top: 15px;
         padding-bottom: 15px;
     }
 
-    /* Дополнительно: уменьшаем заголовок, чтобы не вылезал */
     .hero__title {
         font-size: 60px;
         line-height: 70px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* ABOUT US */
@@ -280,8 +243,6 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 28px;
-    /*
-    flex: 1 0 0;*/
     flex: 1 1 0;
     min-width: 0;
 }
@@ -375,7 +336,6 @@ body {
 
 /* Portfolio */
 
-/* Общие настройки секции */
 .portfolio {
     display: flex;
     flex-direction: column;
@@ -385,50 +345,39 @@ body {
     margin-bottom: 48px;
 }
 
-/* КОНТЕЙНЕР СЛАЙДЕРА */
 .portfolio__slider {
     position: relative;
-    /* Чтобы стрелки позиционировались относительно этой рамки */
     width: 100%;
 }
 
-/* ЛЕНТА С КАРТОЧКАМИ */
 .portfolio__content {
     display: flex;
     gap: 24px;
     flex-wrap: nowrap;
-    /* ГАРАНТИРУЕТ, что карточки не уйдут на вторую строку */
     overflow-x: auto;
-    /* Оставляем auto, чтобы работал скролл */
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scrollbar-width: none;
     padding-bottom: 10px;
     width: 100%;
-    /* Контейнер занимает всю ширину родителя */
 }
 
 .portfolio__content {
     display: flex;
     gap: 24px;
     flex-wrap: nowrap;
-    /* КРИТИЧНО: карточки всегда в одну линию */
     overflow-x: hidden;
-    /* Скроллбара нет, но листать можно через JS */
     width: 100%;
 }
 
 .portfolio__content::-webkit-scrollbar {
     display: none;
-    /* Скрываем скроллбар в Chrome/Safari */
 }
 
-/* СТРЕЛКИ */
 .portfolio__arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-100%);
-    /* Центрируем по вертикали относительно картинок */
     z-index: 10;
     width: 48px;
     height: 48px;
@@ -454,10 +403,8 @@ body {
     right: -24px;
 }
 
-/* КАРТОЧКА */
 .portfolio-card {
     flex: 0 0 544px;
-    /* Фиксированная ширина */
     scroll-snap-align: start;
     position: relative;
     height: 544px;
@@ -481,6 +428,11 @@ body {
     box-sizing: border-box;
 }
 
+.portfolio-card__content:hover {
+    background: #0C3D54;
+}
+
+
 .subtitle {
     color: #FFF;
     font-size: 24px;
@@ -501,9 +453,6 @@ body {
     flex-direction: column;
     margin-top: 40px;
 }
-
-
-
 
 .portfolio__pagination {
     display: flex;
@@ -577,9 +526,6 @@ body {
 }
 
 
-
-
-
 /* Certifications & credentials */
 
 .certifications__grid {
@@ -590,11 +536,10 @@ body {
     width: 100%;
 }
 
-/*это новый*/
+
 .certifications__content {
     display: flex;
     flex-direction: column;
-    /* Элементы (заголовок, сетка, кнопка) встают друг под друга */
     width: 100%;
 }
 
@@ -652,7 +597,7 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
-    /* 150% */
+
 }
 
 .cert-card__icon {
@@ -664,7 +609,6 @@ body {
 
 /*PARTNERS*/
 
-/* --- Секция Partners (Слайдер) --- */
 
 .partners__slider {
     position: relative;
@@ -676,7 +620,6 @@ body {
 .partners__slider-track {
     position: relative;
     width: 100%;
-    /* Фиксированная высота для десктопа. Подберите нужное значение в px */
     height: 640px;
     overflow: hidden;
     border-radius: 12px;
@@ -688,15 +631,14 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Карточка всегда на всю высоту трека */
-    opacity: 0;
+      opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease-in-out;
     display: flex;
     flex-direction: column;
 }
 
-/* Состояние активного слайда */
+
 .partners__card.active {
     opacity: 1;
     visibility: visible;
@@ -706,14 +648,12 @@ body {
 .partners__image {
     width: 100%;
     height: 100%;
-    /* Картинка теперь не зависит от контента, а тянется по высоте */
     display: block;
-    /* Магия: картинка обрезается, но сохраняет пропорции и закрывает весь блок */
     object-fit: cover;
     object-position: center;
 }
 
-/* Текстовый блок ПОВЕРХ картинки */
+
 .partners__card-content {
     position: absolute;
     bottom: 0;
@@ -747,7 +687,7 @@ body {
     margin: 0;
 }
 
-/* Стрелки навигации */
+
 .portfolio__arrow {
     position: absolute;
     top: 50%;
@@ -769,15 +709,7 @@ body {
     background: #052838;
 }
 
-.portfolio__arrow_prev {
-    left: 20px;
-}
 
-.portfolio__arrow_next {
-    right: 20px;
-}
-
-/* Пагинация внизу */
 .portfolio__bottom {
     display: flex;
     justify-content: space-between;
@@ -804,11 +736,10 @@ body {
     background: #052838;
 }
 
-/* Адаптивность: если на мобильных 640px — это слишком много, можно уменьшить */
+
 @media (max-width: 768px) {
     .partners__slider-track {
         height: 500px;
-        /* Высота для планшетов/телефонов */
     }
 
     .partners__card-title {
@@ -819,13 +750,6 @@ body {
         font-size: 16px;
     }
 }
-
-
-
-
-
-
-
 
 
 
@@ -843,7 +767,6 @@ body {
     flex-direction: column;
 }
 
-/* ITEM */
 
 .faq-item {
     border-bottom: 1px solid #D7DAE2;
@@ -885,7 +808,6 @@ body {
     height: 100%;
 }
 
-/* плюс/минус (база под JS) */
 .faq-item__icon::before,
 .faq-item__icon::after {
     position: absolute;
@@ -908,7 +830,6 @@ body {
     transform: translate(-50%, -50%);
 }
 
-/* раскрытое состояние */
 
 .faq-item_active .faq-item__icon::after {
     display: none;
@@ -926,187 +847,6 @@ body {
 }
 
 
-
-
-/* CTA */
-/*
-.cta__picture {
-    width: 768px;
-}
-
-
-.cta__container {
-    display: flex;
-    padding: 60px;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    flex-wrap: wrap;
-    border-radius: 24px;
-    background: #052838;
-}
-
-.cta__content {
-    width: 626px;
-    margin: 60px 0;
-}
-
-
-.cta-note {
-    margin-top: 24px;
-    margin-bottom: 40px;
-}
-
-.cta__text {
-    color: #D7DAE2;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
-    margin-top: 8px;
-}
-
-.cta__text-mini {
-    width: 484px;
-    color: #999EAD;
-    font-family: Outfit;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
-}
-
-
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.form__field {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-
-.form__input {
-    display: flex;
-    padding: 16px;
-    align-items: center;
-    flex: 1 0 0;
-
-    border-radius: 12px;
-    border: 1px solid #375360;
-    background: #052838;
-
-    color: #999EAD;
-    font-family: Outfit;
-    font-size: 16px;
-    line-height: 24px;
-
-    outline: none;
-    transition: all 0.2s ease;
-}
-
-.form__input {
-    font-family: "Outfit", sans-serif;
-}
-
-.form__input::placeholder {
-    color: #AAB7C0;
-}
-
-.form__input:hover {
-    border-color: #5B7C8A;
-}
-
-.form__input:focus {
-    border-color: #3B82F6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-}
-
-.form__input:not(:placeholder-shown) {
-    color: #FFF;
-}
-
-.form__input:disabled {
-    background: #0C3D54;
-    border-color: #375360;
-    color: #6B7F88;
-    cursor: not-allowed;
-}
-
-.form__input:disabled::placeholder {
-    color: #6B7F88;
-}
-
-.field_error .field__input,
-.field__input:invalid:not(:placeholder-shown) {
-    border-color: #FF3B5C;
-}
-
-.form__input_success {
-    border-color: #22C55E;
-}
-
-.form__input_light {
-    background: #F2F4F7;
-    border-color: #D7DAE2;
-    color: #052838;
-}
-
-.form__input_light::placeholder {
-    color: #999EAD;
-}
-
-.form__input_light:focus {
-    border-color: #3B82F6;
-    background: #FFF;
-}
-
-.form__input_light.form__input_error {
-    border-color: #FF5A5F;
-}
-
-.form__input_light.form__input_success {
-    border-color: #22C55E;
-}
-
-.form__button {
-    border: none;
-    background: #FFF;
-    color: #052838;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.form__button:hover {
-    background: #E6E9ED;
-}
-
-
-.cta__image {
-    flex: 1;
-}
-
-.cta__img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.cta-heading {
-    color: #FFF;
-}*/
-
-
-/* --- Секция CTA --- */
 /* --- Секция CTA --- */
 
 .cta__container {
@@ -1132,11 +872,11 @@ body {
 
 .cta__img {
     width: 100%;
-    /* Фиксируем высоту, как вы просили */
+
     height: 530px;
     display: block;
     border-radius: 12px;
-    /* Картинка заполняет блок 530px, не растягиваясь по вертикали */
+  
     object-fit: cover;
     object-position: center;
 }
@@ -1157,7 +897,7 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
     max-width: 500px;
 }
 
@@ -1172,6 +912,7 @@ body {
     font-size: 16px;
     outline: none;
     min-width: 0;
+    height: 56px;
 }
 
 .form__button {
@@ -1183,7 +924,7 @@ body {
     padding: 12px 30px;
     border-radius: 8px;
     cursor: pointer;
-    min-height: 58px;
+    min-height: 56px;
     white-space: nowrap;
     flex-shrink: 0;
 }
@@ -1228,12 +969,8 @@ body {
     }
 
 
-    /*    .cta__img {
-height: 400px; 
-    } */
 }
 
-/* --- Декор и текст --- */
 .cta-note {
     margin-top: 24px;
     margin-bottom: 40px;
@@ -1257,10 +994,6 @@ height: 400px;
 .cta-heading {
     color: #FFF;
 }
-
-
-
-
 
 
 /* Footer */
@@ -1353,6 +1086,7 @@ height: 400px;
     height: 44px;
     display: flex;
     gap: 12px;
+    width: 500px;
 }
 
 .footer__input {
@@ -1374,22 +1108,181 @@ height: 400px;
 
 
 
+/* --- АДАПТИВНОСТЬ --- */
+
+@media (max-width: 1600px) {
+
+    .cta__content,
+    .cta__picture {
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+    }
+
+    .cta__content {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cta__container {
+        padding: 40px 24px;
+    }
+
+    .form__field {
+        max-width: 100%;
+        gap: 10px;
+    }
+
+    .form__button {
+        padding: 12px 20px;
+    }
+
+    .form__input {
+        padding: 16px 12px;
+        font-size: 14px;
+    }
+
+    .cta__picture {
+        display: none;
+    }
 
 
 
+    /* --- Декор и текст --- */
+    .cta-note {
+        margin-top: 24px;
+        margin-bottom: 40px;
+    }
+
+    .cta__text {
+        color: #D7DAE2;
+        font-size: 16px;
+        line-height: 24px;
+        margin-top: 8px;
+    }
+
+    .cta__text-mini {
+        max-width: 484px;
+        width: 100%;
+        color: #999EAD;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .cta-heading {
+        color: #FFF;
+    }
 
 
 
+    /* Footer */
+
+    .footer__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    /* LEFT */
+
+    .footer__left {
+        height: 146px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .footer__brand {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .footer__logo img {
+        display: block;
+    }
+
+    .footer__copy {
+        font-size: 14px;
+        color: #375360;
+    }
+
+    .footer__socials {
+        display: flex;
+        gap: 16px;
+    }
+
+    .footer__social img {
+        display: block;
+    }
+
+    /* NAV */
+
+    .footer__nav {
+        display: grid;
+        grid-template-rows: repeat(2, auto);
+        grid-template-columns: repeat(3, auto);
+        gap: 24px 86px;
+    }
+
+    .footer__link {
+        font-size: 16px;
+        color: #375360;
+    }
+
+    /* RIGHT */
+
+    .footer__right {
+        max-width: 547px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 
 
+    .footer__subscription {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
 
+    .footer__title {
+        font-size: 24px;
+        line-height: 30px;
+        font-weight: 600;
+        color: #052838;
+    }
 
+    .footer__text {
+        font-size: 14px;
+        color: #375360;
+        line-height: 20px;
+    }
 
+    .footer__form {
+        height: 44px;
+        display: flex;
+        gap: 12px;
+    }
 
+    .footer__input {
+        flex-grow: 1;
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 1px solid #D7DAE2;
+        font-size: 14px;
+        outline: none;
+    }
 
+    .footer__button {
+        width: auto;
+    }
 
-
-
+    .footer__input {
+        font-family: "Outfit", sans-serif;
+    }
+}
 
 
 
@@ -1426,14 +1319,6 @@ height: 400px;
         gap: 24px;
     }
 }
-
-
-
-
-
-
-
-
 
 
 /* ============================================ */
@@ -1485,7 +1370,7 @@ height: 400px;
     .about__picture {
         order: 1;
         width: 100%;
-        height: 280px;
+        height: 300px;
         overflow: hidden;
         border-radius: 12px;
         margin-top: 12px;
@@ -1506,6 +1391,10 @@ height: 400px;
         gap: 24px;
     }
 
+
+    .portfolio__top {
+        margin-bottom: 0;
+    }
 
     .portfolio__slider {
         overflow-x: auto;
@@ -1531,16 +1420,10 @@ height: 400px;
         object-fit: cover;
     }
 
-    /*
-    .portfolio__arrow {
-        display: none;
-    }*/
 
     .portfolio__pagination-line {
         width: 200px;
     }
-
-
 
     .certifications__grid {
 
@@ -1554,9 +1437,6 @@ height: 400px;
         min-width: 320px;
         min-height: 240px;
     }
-
-
-
 
     .faq__grid {
         grid-template-columns: 1fr;
@@ -1685,31 +1565,17 @@ height: 400px;
         max-width: 400px;
     }
 
-
-
-
     .hero {
 
-        height: 1024px;
+        height: 1000px;
         object-fit: cover;
     }
 
-    /*
-
-  .center {
-    padding-left: calc(50% - 352px);
-    padding-right: calc(50% -352px);
-  }
-*/
 
     .hero__content {
         padding-top: 200px;
         padding-bottom: 100px;
     }
-
-
-
-
 
     .hero__title {
         font-size: 64px;
@@ -1730,13 +1596,12 @@ height: 400px;
         font-size: 20px;
     }
 
-    /* ABOUT US — картинка сверху */
+    /* ABOUT US */
     .about__content {
         display: flex;
         flex-direction: column;
         gap: 28px;
     }
-
 
     .about__picture {
         order: 1;
@@ -1772,18 +1637,11 @@ height: 400px;
         gap: 20px;
     }
 
-
     .portfolio-card {
         flex: 0 0 85%;
         scroll-snap-align: start;
     }
 
-
-
-
-    .portfolio__arrow {
-        display: none;
-    }
 
     .portfolio__pagination,
     .partners__pagination {
@@ -1793,23 +1651,6 @@ height: 400px;
     .portfolio__pagination-line {
         width: 200px;
     }
-
-    /*
-    .button-right {
-        margin-left: 0;
-        width: 100%;
-    }*/
-
-
-
-    /*
-    .certifications__grid {
-        grid-template-columns: 1fr;
-    }
-
-    .cert-card {
-        min-height: 220px;
-    }*/
 
 
     .certifications__grid {
@@ -1824,7 +1665,6 @@ height: 400px;
         max-width: none;
         min-width: 320px;
         min-height: 220px;
-
     }
 
 
@@ -1882,7 +1722,6 @@ height: 400px;
         line-height: 14px;
     }
 
-    /* FOOTER — как на скриншоте */
     .footer__container {
         display: flex;
         flex-direction: column;
@@ -1926,6 +1765,7 @@ height: 400px;
         flex-direction: column;
         height: auto;
         gap: 12px;
+        width: 100%;
     }
 
     .footer__input {
@@ -1934,5 +1774,487 @@ height: 400px;
 
     .footer__button {
         width: 100%;
+        font-family: "Outfit";
     }
+}
+
+
+
+/* ============================================ */
+/* MOBILE 425px */
+/* ============================================ */
+
+@media (max-width: 425px) {
+
+    .center {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+
+    .partners__content {
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* HEADER */
+
+    .header {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        align-items: center;
+    }
+
+    .hero {
+
+        min-height: 852px;
+        object-fit: cover;
+        background-image: url(img/hero-mobile.jpg);
+        background-size: contain;
+
+    }
+
+
+    .header__nav,
+    .header__contact {
+        display: none !important;
+    }
+
+    .header__burger {
+        display: block !important;
+        margin-left: auto;
+    }
+
+    .logo__img {
+        width: 92px;
+        height: auto;
+    }
+
+    /* HERO */
+
+
+    .hero {
+        height: 852px;
+        background-size: cover;
+        background-position: center top;
+    }
+
+    .hero__content {
+        padding-top: 200px;
+        padding-bottom: 80px;
+    }
+
+    .hero__info {
+        max-width: 100%;
+    }
+
+    .hero__title {
+        text-align: center;
+        font-size: 52px;
+        line-height: 60px;
+        margin-bottom: 20px;
+    }
+
+    .text-hero {
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        padding: 0 40px;
+    }
+
+    .text-big {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .hero__margin {
+        margin-top: 40px;
+    }
+
+
+    /* GLOBAL */
+
+    .padding-tb {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+
+    .padding-tb-mini {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+
+    .heading {
+        font-size: 32px;
+        line-height: 36px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .text {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .top {
+        margin-bottom: 40px;
+    }
+
+  
+    /* BUTTONS */
+  
+
+    .button,
+    .button-right,
+    .form__button,
+    .footer__button {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .footer__button {
+        font-family: "Outfit";
+        font-size: 16px;
+    }
+
+  
+    /* ABOUT */
+  
+
+    .about__content {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .about__picture {
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+        border-radius: 12px;
+    }
+
+    .about__img {
+        width: 100%;
+        height: 120%;
+        object-fit: cover;
+    }
+
+    .about__info {
+        gap: 20px;
+    }
+
+    .about__text {
+        margin-bottom: 20px;
+    }
+
+    
+    /* PORTFOLIO */
+  
+
+    .portfolio__top {
+        margin-bottom: 32px;
+    }
+
+    .portfolio__text {
+        margin-bottom: 0;
+    }
+
+    .portfolio__slider {
+        overflow: visible;
+    }
+
+    .portfolio__content {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+        padding-right: 16px;
+    }
+
+    .portfolio__content::-webkit-scrollbar {
+        display: none;
+    }
+
+    .portfolio-card {
+        flex: 0 0 88%;
+        height: 400px;
+        scroll-snap-align: start;
+    }
+
+    .portfolio-card__content {
+        height: auto;
+        min-height: 120px;
+        padding: 18px;
+    }
+
+    .portfolio-card__text {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .portfolio__arrow,
+    .portfolio__pagination {
+        display: none !important;
+    }
+
+
+    /* CERTIFICATIONS */
+
+
+    .certifications__grid {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 32px;
+        padding-right: 16px;
+        order: 2;
+        margin-top: 32px;
+    }
+
+
+    .certifications__grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .cert-card {
+        flex: 0 0 88%;
+        min-width: unset;
+        width: 88%;
+        height: 280px;
+        scroll-snap-align: start;
+    }
+
+    .cert-card__text {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+
+
+    /* TRUSTED PARTNERS */
+
+
+    .partners .top {
+        margin-bottom: 32px;
+    }
+
+    .partners__slider {
+        margin-bottom: 0;
+        overflow: visible;
+        order: 3;
+        margin-top: 28px;
+    }
+
+    .partners__slider-track {
+        display: flex;
+        gap: 8px;
+        height: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 0;
+        padding-right: 16px;
+    }
+
+    .partners__slider-track::-webkit-scrollbar {
+        display: none;
+    }
+
+    .partners__card {
+        position: relative;
+        opacity: 1;
+        visibility: visible;
+        flex: 0 0 88%;
+        min-width: unset;
+        width: 88%;
+        height: 600px;
+        overflow: hidden;
+        border-radius: 12px;
+        scroll-snap-align: start;
+    }
+
+    .partners__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .partners__card-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        min-height: auto;
+        padding: 24px 24px 44px 24px;
+    }
+
+    .partners__card-title {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .partners__card-text {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .partners__slider .portfolio__arrow,
+    .partners__pagination,
+    .portfolio__pagination,
+    .portfolio__footer {
+        display: none !important;
+    }
+
+    .partners__footer {
+        margin-top: 8px;
+    }
+
+
+
+  
+    /* FAQ */
+
+
+    .faq__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .faq-item {
+        padding: 20px 0;
+    }
+
+    .faq-item__question {
+        font-size: 16px;
+        line-height: 22px;
+        padding-right: 16px;
+    }
+
+    .faq-item__answer {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    /* CTA */
+
+    .cta__container {
+        padding: 24px 20px;
+        border-radius: 20px;
+    }
+
+    .cta__picture {
+        display: none;
+    }
+
+    .cta__content {
+        width: 100%;
+    }
+
+    .form {
+        gap: 14px;
+    }
+
+    .form__field {
+        flex-direction: column;
+        gap: 12px;
+        max-width: 100%;
+    }
+
+    .form__input {
+        width: 100%;
+        padding: 16px;
+        font-size: 14px;
+    }
+
+    .form__button {
+        min-height: 52px;
+        font-size: 16px;
+    }
+
+    .cta__text {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .cta__text-mini {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+
+    /* FOOTER */
+
+    .footer__container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer__left {
+        align-items: flex-start;
+        gap: 20px;
+        height: auto;
+    }
+
+    .footer__socials {
+        gap: 14px;
+    }
+
+    .footer__nav {
+        display: grid;
+        grid-template-rows: repeat(3, auto);
+        grid-template-columns: repeat(2, auto);
+        gap: 24px 86px;
+    }
+
+    .footer__right {
+        width: 100%;
+        margin: 0;
+        gap: 20px;
+    }
+
+    .footer__form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        height: auto;
+    }
+
+    .footer__input {
+        width: 100%;
+    }
+
+    .footer__title {
+        font-size: 22px;
+        line-height: 28px;
+    }
+
+
+    .footer__copy,
+    .footer__link {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .footer__text {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
 }
