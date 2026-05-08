@@ -13,9 +13,13 @@ body {
     font-family: "Outfit", sans-serif;
 }
 
-
+/*
 .mobile-menu {
     display: none !important;
+}*/
+
+.mobile-menu {
+    display: none;
 }
 
 
