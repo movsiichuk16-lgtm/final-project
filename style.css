@@ -15,7 +15,7 @@ body {
 
 
 .mobile-menu {
-    display: none;
+    display: none !important;
 }
 
 
@@ -346,10 +346,10 @@ body {
     display: flex;
     flex-direction: column;
 }
-
+/*
 .portfolio__top {
     margin-bottom: 48px;
-}
+}*/
 
 .portfolio__slider {
     position: relative;
@@ -1993,41 +1993,6 @@ body {
     body.menu-open {
         overflow: hidden;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
