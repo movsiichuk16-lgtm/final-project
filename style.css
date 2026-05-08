@@ -502,7 +502,7 @@ body {
     background-color: #052838;
     color: white;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 12px;
     gap: 12px;
     margin-left: auto;
     align-items: center;
@@ -1790,6 +1790,7 @@ body {
         width: 100%;
         font-family: "Outfit";
     }
+
 }
 
 
@@ -1919,6 +1920,8 @@ body {
         height: auto;
     }
 
+
+    
     .mobile-menu {
         position: fixed;
         inset: 0;
@@ -1954,7 +1957,6 @@ body {
         visibility: visible;
     }
 
-    /* NAV */
 
     .mobile-menu .header__nav {
         display: flex !important;
@@ -1972,9 +1974,6 @@ body {
     }
 
 
-
-    /* CONTACT */
-
     .mobile-menu .header__contact {
         display: flex !important;
         justify-content: center;
@@ -1986,13 +1985,11 @@ body {
     }
 
 
-
     .mobile-menu .header__phone {
         width: 100%;
         justify-content: center;
     }
 
-    /* LOCK */
 
     body.menu-open {
         overflow: hidden;
