@@ -1,6 +1,6 @@
 
-// Код для СТАРОГО слайдера (Portfolio - прокрутка)
-(function() {
+
+(function () {
     const initPortfolio = () => {
         const track = document.querySelector('.portfolio__content');
         const slides = document.querySelectorAll('.portfolio .portfolio-card');
@@ -67,7 +67,7 @@
         });
 
         track.addEventListener('scroll', () => {
-            // move indicator smoothly based on scroll progress
+         
             if (line && indicator) {
                 const segWidth = line.clientWidth / pages;
                 const maxScroll = track.scrollWidth - track.clientWidth;
@@ -107,8 +107,8 @@
     }
 })();
 
-// Код для НОВОГО слайдера (Partners - горизонтальный прокрутка и круговое листание)
-(function() {
+
+(function () {
     const initSlider = () => {
         const sliderTrack = document.querySelector('.partners__slider-track');
         const slides = document.querySelectorAll('.partners__card');
@@ -194,7 +194,7 @@
         });
 
         sliderTrack.addEventListener('scroll', () => {
-            // smooth indicator movement
+            
             if (line && indicator) {
                 const segWidth = line.clientWidth / slides.length;
                 const maxScroll = sliderTrack.scrollWidth - sliderTrack.clientWidth;
@@ -236,7 +236,7 @@
     }
 })();
 
-(function() {
+(function () {
     const ease = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
     const smoothScrollTo = (targetY, duration = 700) => {
         const startY = window.scrollY || window.pageYOffset;
@@ -274,41 +274,33 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-// ======================================
 // MOBILE MENU
-// ======================================
+
 
 document.addEventListener('DOMContentLoaded', () => {
+
 
     const burger = document.querySelector('.header__burger');
     const menu = document.querySelector('#mobileMenu');
     const links = document.querySelectorAll('.mobile-menu .nav__link');
 
-    if (!burger || !menu) return;
+    if (burger && menu) {
 
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('active');
-        menu.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
-    });
-
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            burger.classList.remove('active');
-            menu.classList.remove('active');
-            document.body.classList.remove('menu-open');
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('active');
+            menu.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
         });
-    });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('active');
+                menu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
+
+    }
 
     const faqHeaders = document.querySelectorAll('.faq-item__header');
 
