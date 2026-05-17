@@ -9,14 +9,14 @@ a {
     color: inherit;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Outfit", sans-serif;
 }
 
-/*
-.mobile-menu {
-    display: none !important;
-}*/
 
 .mobile-menu {
     display: none;
@@ -196,7 +196,6 @@ body {
     background: #0C3D54;
 }
 
-/* --- UTILS --- */
 
 .padding-tb {
     padding-top: 120px;
@@ -208,7 +207,6 @@ body {
     padding-bottom: 100px;
 }
 
-/* --- MEDIA QUERIES --- */
 
 @media (max-width: 1700px) {
     .center {
@@ -283,8 +281,6 @@ body {
 }
 
 
-
-
 /* PORTFOLIO */
 
 .info {
@@ -326,7 +322,6 @@ body {
     z-index: 10;
 }
 
-
 .top {
     display: flex;
     flex-direction: column;
@@ -343,17 +338,10 @@ body {
     line-height: 24px;
 }
 
-
-/* Portfolio */
-
 .portfolio {
     display: flex;
     flex-direction: column;
 }
-/*
-.portfolio__top {
-    margin-bottom: 48px;
-}*/
 
 .portfolio__slider {
     position: relative;
@@ -442,7 +430,6 @@ body {
     background: #0C3D54;
 }
 
-
 .subtitle {
     color: #FFF;
     font-size: 24px;
@@ -457,7 +444,6 @@ body {
     margin-top: 8px;
 }
 
-/* ПАГИНАЦИЯ И НИЖНЯЯ ЧАСТЬ */
 .portfolio__bottom {
     display: flex;
     flex-direction: column;
@@ -472,7 +458,6 @@ body {
     margin-bottom: 40px;
 }
 
-
 .portfolio__pagination-number {
     color: #052838;
     font-size: 16px;
@@ -481,7 +466,7 @@ body {
 
 .portfolio__pagination-line {
     display: flex;
-    width: 400px;
+    width: 420px;
     height: 2px;
     background: #D7DAE2;
 }
@@ -507,11 +492,6 @@ body {
     margin-left: auto;
     align-items: center;
 }
-
-
-
-
-/* АДАПТИВНОСТЬ */
 
 
 @media (max-width: 1024px) {
@@ -546,7 +526,6 @@ body {
     width: 100%;
 }
 
-
 .certifications__content {
     display: flex;
     flex-direction: column;
@@ -568,7 +547,6 @@ body {
     position: relative;
 }
 
-
 .cert-card {
     transition: background 0.3s ease;
 }
@@ -576,8 +554,6 @@ body {
 .cert-card:hover {
     background: #0C3D54;
 }
-
-
 
 .cert-card__text {
     color: #D7DAE2;
@@ -590,7 +566,6 @@ body {
     font-weight: 400;
     line-height: 24px;
 }
-
 
 .cert-card__badge {
     position: absolute;
@@ -607,7 +582,6 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
-
 }
 
 .cert-card__icon {
@@ -619,7 +593,6 @@ body {
 
 /*PARTNERS*/
 
-
 .partners__slider {
     position: relative;
     display: flex;
@@ -628,31 +601,38 @@ body {
 }
 
 .partners__slider-track {
-    position: relative;
     width: 100%;
     height: 640px;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    gap: 24px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     border-radius: 12px;
+    padding: 16px 0;
+}
+
+.partners__slider-track::-webkit-scrollbar {
+    display: none;
 }
 
 .partners__card {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    position: relative;
+    flex: 0 0 100%;
+    min-width: 100%;
     height: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease-in-out;
+    overflow: hidden;
+    border-radius: 12px;
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
 }
 
-
 .partners__card.active {
-    opacity: 1;
-    visibility: visible;
-    z-index: 2;
+    z-index: auto;
 }
 
 .partners__image {
@@ -662,7 +642,6 @@ body {
     object-fit: cover;
     object-position: center;
 }
-
 
 .partners__card-content {
     position: absolute;
@@ -697,7 +676,6 @@ body {
     margin: 0;
 }
 
-
 .portfolio__arrow {
     position: absolute;
     top: 50%;
@@ -719,7 +697,6 @@ body {
     background: #052838;
 }
 
-
 .portfolio__bottom {
     display: flex;
     justify-content: space-between;
@@ -728,22 +705,51 @@ body {
 }
 
 .portfolio__pagination-line {
+    position: relative;
     display: flex;
-    width: 200px;
+    width: 400px;
     height: 2px;
     background: rgba(5, 40, 56, 0.1);
     margin: 0 15px;
+    border-radius: 2px;
+    overflow: hidden;
 }
 
 .portfolio__pagination-segment {
     flex: 1;
     height: 100%;
     background: transparent;
-    transition: background 0.3s ease;
 }
 
-.portfolio__pagination-segment_active {
+.portfolio__pagination-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: calc(100% / 6);
     background: #052838;
+    border-radius: 2px;
+    transition: transform 150ms ease;
+    pointer-events: none;
+}
+
+.portfolio__arrow {
+    transition: background-color 180ms ease;
+}
+
+.portfolio__arrow:hover,
+.portfolio__arrow:focus-visible {
+    background-color: #0C3D54;
+}
+
+.portfolio__arrow .portfolio__arrow-icon path {
+    transition: stroke 180ms ease, fill 180ms ease;
+}
+
+.portfolio__arrow:hover .portfolio__arrow-icon path,
+.portfolio__arrow:focus-visible .portfolio__arrow-icon path {
+    stroke: #FFFFFF;
+    fill: none;
 }
 
 
@@ -762,8 +768,8 @@ body {
 }
 
 
-
 /* FAQ */
+
 
 .faq__grid {
     display: grid;
@@ -771,18 +777,15 @@ body {
     gap: 64px;
 }
 
-
 .faq__right {
     display: flex;
     flex-direction: column;
 }
 
-
 .faq-item {
     border-bottom: 1px solid #D7DAE2;
     padding: 32px 0;
 }
-
 
 .faq-item__header {
     width: 100%;
@@ -804,56 +807,35 @@ body {
     font-family: "Outfit";
 }
 
-.faq-item__icon {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.faq-item__body {
+    padding: 0;
+    box-sizing: border-box;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: height 1s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.faq-item_active .faq-item__body {
+    opacity: 1;
+    visibility: visible;
+}
+
+.faq-item__answer {
+    margin: 0;
+    padding-top: 16px;
 }
 
 .faq-item__icon img {
     display: block;
     width: 100%;
     height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.faq-item__icon::before,
-.faq-item__icon::after {
-    position: absolute;
-    background: #052838;
-}
-
-.faq-item__icon::before {
-    width: 16px;
-    height: 2px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.faq-item__icon::after {
-    width: 2px;
-    height: 16px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-
-.faq-item_active .faq-item__icon::after {
-    display: none;
-}
-
-.faq-item__body {
-    margin-top: 16px;
-}
-
-.faq-item__answer {
-    font-size: 16px;
-    line-height: 24px;
-    color: #375360;
-    max-width: 600px;
+.faq-item_active .faq-item__icon img {
+    transform: scaleY(-1);
 }
 
 
@@ -891,8 +873,6 @@ body {
     object-position: center;
 }
 
-/* --- ПОЛЯ ФОРМЫ --- */
-
 .form {
     display: flex;
     flex-direction: column;
@@ -908,7 +888,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
-    max-width: 500px;
+    max-width: 626px;
 }
 
 .form__input {
@@ -923,6 +903,32 @@ body {
     outline: none;
     min-width: 0;
     height: 56px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.form__input:hover {
+    background: #0C3D54;
+    border-color: #052838;
+    color: #999EAD;
+}
+
+.form__input:focus-visible {
+    background: transparent;
+    border-color: #3F73FF;
+    color: #F7F8FA;
+}
+
+.form__input:not(:placeholder-shown),
+.form__input.filled {
+    background: transparent;
+    border-color: #375360;
+    color: #F7F8FA;
+}
+
+.form__input.error {
+    background: transparent;
+    border-color: #F55D6D;
+    color: #F7F8FA;
 }
 
 .form__button {
@@ -940,7 +946,6 @@ body {
     flex-shrink: 0;
 }
 
-/* --- АДАПТИВНОСТЬ --- */
 
 @media (max-width: 1600px) {
 
@@ -1008,7 +1013,6 @@ body {
 }
 
 
-/* Footer */
 
 .footer {}
 
@@ -1018,7 +1022,6 @@ body {
     align-items: flex-start;
 }
 
-/* LEFT */
 
 .footer__left {
     height: 146px;
@@ -1051,8 +1054,6 @@ body {
     display: block;
 }
 
-/* NAV */
-
 .footer__nav {
     display: grid;
     grid-template-rows: repeat(2, auto);
@@ -1065,15 +1066,12 @@ body {
     color: #375360;
 }
 
-/* RIGHT */
-
 .footer__right {
     max-width: 547px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-
 
 .footer__subscription {
     display: flex;
@@ -1098,7 +1096,7 @@ body {
     height: 44px;
     display: flex;
     gap: 12px;
-    width: 500px;
+    width: 547px;
 }
 
 .footer__input {
@@ -1117,7 +1115,6 @@ body {
 .footer__input {
     font-family: "Outfit", sans-serif;
 }
-
 
 
 /* --- АДАПТИВНОСТЬ --- */
@@ -1161,7 +1158,6 @@ body {
     }
 
 
-
     /* --- Декор и текст --- */
     .cta-note {
         margin-top: 24px;
@@ -1188,7 +1184,6 @@ body {
     }
 
 
-
     /* Footer */
 
     .footer__container {
@@ -1197,7 +1192,6 @@ body {
         align-items: flex-start;
     }
 
-    /* LEFT */
 
     .footer__left {
         height: 146px;
@@ -1230,8 +1224,6 @@ body {
         display: block;
     }
 
-    /* NAV */
-
     .footer__nav {
         display: grid;
         grid-template-rows: repeat(2, auto);
@@ -1244,15 +1236,12 @@ body {
         color: #375360;
     }
 
-    /* RIGHT */
-
     .footer__right {
         max-width: 547px;
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
-
 
     .footer__subscription {
         display: flex;
@@ -1298,7 +1287,6 @@ body {
 }
 
 
-
 @media (max-width: 1280px) {
 
     .about__content {
@@ -1306,7 +1294,6 @@ body {
         flex-direction: column;
         gap: 32px;
     }
-
 
     .about__picture {
         order: 1;
@@ -1334,9 +1321,6 @@ body {
 }
 
 
-/* ============================================ */
-/* Планшет 1024px */
-/* ============================================ */
 
 @media (max-width: 1024px) {
     .center {
@@ -1371,14 +1355,12 @@ body {
 
 
 
-
-    /* ABOUT US — картинка сверху */
+    /* ABOUT US */
     .about__content {
         display: flex;
         flex-direction: column;
         gap: 32px;
     }
-
 
     .about__picture {
         order: 1;
@@ -1417,14 +1399,17 @@ body {
     .portfolio__content {
         display: flex;
         gap: 24px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
     }
 
-
     .portfolio-card {
-        flex: 0 0 544px;
+        flex: 0 0 calc((100% - 24px) / 2);
         scroll-snap-align: start;
-        width: 544px;
-        height: 544px;
+        width: calc((100% - 24px) / 2);
+        min-width: 0;
+        aspect-ratio: 1 / 1;
     }
 
     .portfolio-card__img {
@@ -1432,7 +1417,6 @@ body {
         height: 100%;
         object-fit: cover;
     }
-
 
     .portfolio__pagination-line {
         width: 200px;
@@ -1485,9 +1469,6 @@ body {
         object-position: center;
         display: block;
     }
-
-    /*------------------------------*/
-
 
     .cta__text-mini {
         width: 100%;
@@ -1546,9 +1527,8 @@ body {
     }
 }
 
-/* ============================================ */
+
 /* Планшет 768px */
-/* ============================================ */
 
 @media (max-width: 768px) {
     .center {
@@ -1651,8 +1631,11 @@ body {
     }
 
     .portfolio-card {
-        flex: 0 0 85%;
+        flex: 0 0 calc((100% - 20px) / 2);
         scroll-snap-align: start;
+        width: calc((100% - 20px) / 2);
+        min-width: 0;
+        aspect-ratio: 1 / 1;
     }
 
 
@@ -1679,7 +1662,6 @@ body {
         min-width: 320px;
         min-height: 220px;
     }
-
 
     .cert-card__top .subtitle {
         font-size: 20px;
@@ -1790,14 +1772,12 @@ body {
         width: 100%;
         font-family: "Outfit";
     }
-
 }
 
 
 
-/* ============================================ */
 /* MOBILE 425px */
-/* ============================================ */
+
 
 @media (max-width: 425px) {
 
@@ -1805,7 +1785,6 @@ body {
         padding-left: 16px;
         padding-right: 16px;
     }
-
 
     .partners__content {
 
@@ -1826,7 +1805,6 @@ body {
     }
 
 
-
     .hero {
 
         min-height: 852px;
@@ -1834,17 +1812,14 @@ body {
         background-image: url(img/hero-mobile.jpg);
         background-size: contain;
         background-position: center top;
-
     }
 
 
-    /* =========================================
-   MOBILE BURGER
-========================================= */
+    /* MOBILE BURGER */
 
-.mobile-menu {
-    display: flex;
-}
+    .mobile-menu {
+        display: flex;
+    }
 
     .header__burger {
         position: relative;
@@ -1905,9 +1880,9 @@ body {
     /* MOBILE MENU */
 
 
-.nav__link_active {
-    text-decoration: none;
-}
+    .nav__link_active {
+        text-decoration: none;
+    }
 
     .mobile-menu__logo {
         position: absolute;
@@ -1920,8 +1895,6 @@ body {
         height: auto;
     }
 
-
-    
     .mobile-menu {
         position: fixed;
         inset: 0;
@@ -1973,7 +1946,6 @@ body {
         text-decoration: none;
     }
 
-
     .mobile-menu .header__contact {
         display: flex !important;
         justify-content: center;
@@ -1984,23 +1956,14 @@ body {
         bottom: 40px;
     }
 
-
     .mobile-menu .header__phone {
         width: 100%;
         justify-content: center;
     }
 
-
     body.menu-open {
         overflow: hidden;
     }
-
-
-
-
-
-
-
 
     .header__nav,
     .header__contact {
@@ -2019,8 +1982,6 @@ body {
     }
 
     /* HERO */
-
-
 
     .hero__content {
         padding-top: 200px;
@@ -2116,14 +2077,14 @@ body {
 
     .about__picture {
         width: 100%;
-        height: 220px;
+        height: 262px;
         overflow: hidden;
         border-radius: 12px;
     }
 
-    .about__img {
+    * .about__img {
         width: 100%;
-        height: 120%;
+        height: 100%;
         object-fit: cover;
     }
 
@@ -2196,7 +2157,6 @@ body {
 
     /* CERTIFICATIONS */
 
-
     .certifications__grid {
         display: flex;
         gap: 8px;
@@ -2209,7 +2169,6 @@ body {
         order: 2;
         margin-top: 32px;
     }
-
 
     .certifications__grid::-webkit-scrollbar {
         display: none;
@@ -2229,9 +2188,7 @@ body {
     }
 
 
-
     /* TRUSTED PARTNERS */
-
 
     .partners .top {
         margin-bottom: 32px;
@@ -2309,10 +2266,7 @@ body {
     }
 
 
-
-
     /* FAQ */
-
 
     .faq__grid {
         grid-template-columns: 1fr;
